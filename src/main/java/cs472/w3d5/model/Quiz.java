@@ -49,16 +49,16 @@ public class Quiz {
         return this.numberOfCorrects;
     }
 
-    public int getCurrentQuestionIndex(){
-        return this.currentQuestionIndex;
-    }
-
-    public int getNumQuestions(){
-        return this.numberOfQuestions;
-    }
-
     public String getCurrentQuestion(){
         return questions.get(currentQuestionIndex).getQuestion();
+    }
+
+    public void goNextQuestion(){
+        this.currentQuestionIndex++;
+    }
+
+    public int getCurrentAnswer(){
+        return questions.get(currentQuestionIndex).getResult();
     }
 
     public boolean isOver() {
