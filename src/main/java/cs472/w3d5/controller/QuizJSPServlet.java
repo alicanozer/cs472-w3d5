@@ -24,6 +24,7 @@ public class QuizJSPServlet extends HttpServlet {
         quiz.answer = null;
         quiz.attempt = 0;
         quiz.hint = quiz.quiz.getCurrentAnswer();
+        quiz.grade = "NC";
 
         HttpSession session = request.getSession();
         session.setAttribute("sdata", quiz);
@@ -56,6 +57,7 @@ public class QuizJSPServlet extends HttpServlet {
                         quiz.score = quiz.quiz.getNumCorrect();
                         quiz.attempt = 0;
                         quiz.hint = quiz.quiz.getCurrentAnswer();
+                        quiz.calculateGrade();
                     } else {
                         quiz.attempt++;
                         quiz.error = true;
@@ -72,6 +74,11 @@ public class QuizJSPServlet extends HttpServlet {
                 quiz.answer = null;
                 quiz.attempt = 0;
                 quiz.hint = quiz.quiz.getCurrentAnswer();
+                quiz.grade = "NC";
+            }
+            if (quiz.quiz.isOver()){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Result.jsp");
+                dispatcher.forward(request, response);
             }
         }
 

@@ -49,12 +49,20 @@ public class Quiz {
         return this.numberOfCorrects;
     }
 
-    public String getCurrentQuestion(){
-        return questions.get(currentQuestionIndex).getQuestion();
+    public int getCurrentQuestionIndex(){
+        return this.currentQuestionIndex;
+    }
+
+    public int getNumQuestions(){
+        return this.numberOfQuestions;
     }
 
     public void goNextQuestion(){
         this.currentQuestionIndex++;
+    }
+
+    public String getCurrentQuestion(){
+        return questions.get(currentQuestionIndex).getQuestion();
     }
 
     public int getCurrentAnswer(){
